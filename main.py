@@ -17,8 +17,7 @@ def hello():
 
 @app.route('/pipefy')
 def teste_pipefy() -> str:
-    URL = "https://app.pipefy.com/graphql"
-    TOKEN = "eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJQaXBlZnkiLCJpYXQiOjE3NTIyNzEwODYsImp0aSI6IjhkNDE5Y2I3LWE2YzUtNGIxYS1iZjQzLWRmNGMyNGU0Njg3ZSIsInN1YiI6MzA2ODE1Mzc2LCJ1c2VyIjp7ImlkIjozMDY4MTUzNzYsImVtYWlsIjoib2xpdmVpcmFicnVub2FAZ21haWwuY29tIn19.CIQTs-cNeZG512sbCWhcr6FHMN_FbbMGzi8lyO7KNrw3Oz8Rcue_hpAIp2Q6Ta_bjED52MBuUMzKDcbJdWrQ1A"
+
     query = """
      {
           allCards(pipeId: "306514398") {
@@ -36,11 +35,11 @@ def teste_pipefy() -> str:
     """
 
     headers = {
-        "Authorization": f"Bearer {TOKEN}",
+        "Authorization": f"Bearer {token}",
         "Content-Type": "application/json"
     }
 
-    response = requests.post(URL, json={"query": query}, headers=headers)
+    response = requests.post(url, json={"query": query}, headers=headers)
     data = response.json()
 
     print(data)
